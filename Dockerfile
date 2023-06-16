@@ -2,20 +2,19 @@
 FROM ubuntu:22.04
 
 # Install any needed packages specified in requirements.txt
-RUN apt-get update && \
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
 # Development files
     mingw-w64 \
-    # x32 version system environment
-    gcc-mingw-w64-i686 \
-    gcc-multilib g++-multilib \
-    libc6:i386 libstdc++6:i386 \
-    #
     build-essential \
     git \
     bzip2 \
-    wget && \
+    wget \
+# x32 version system environment
+    gcc-mingw-w64-i686 \
+    gcc-multilib g++-multilib libc6:i386 libstdc++6:i386 && \
     apt-get clean
 #
 ARG CMAKE_VERSION=3.25.1
