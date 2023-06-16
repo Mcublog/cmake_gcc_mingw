@@ -7,6 +7,11 @@ RUN apt-get update && \
     apt-get install -y \
 # Development files
     mingw-w64 \
+    # x32 version system environment
+    gcc-mingw-w64-i686 \
+    gcc-multilib g++-multilib \
+    libc6:i386 libstdc++6:i386 \
+    #
     build-essential \
     git \
     bzip2 \
